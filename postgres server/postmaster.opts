@@ -1,0 +1,1 @@
+/Applications/Postgres.app/Contents/Versions/14/bin/postgres "-D" "/Users/christiaannel/Documents/python/codecademy/designing_database/postgres server" "-p" "5432"
