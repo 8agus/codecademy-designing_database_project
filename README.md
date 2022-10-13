@@ -1,4 +1,4 @@
-# Designing a Database From Scratchbase_project
+# Designing a Database From Scratch
 
 ## Project Instructions
 
