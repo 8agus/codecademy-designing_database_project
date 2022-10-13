@@ -2,19 +2,21 @@ import pandas as pd
 import random
 
 
+# Creates expiry date for credit card table and order dates for purchase history table
 def create_date(start, end):
     return str(random.randrange(1, 28)) + '-' + str(random.randrange(1, 12)) + '-' + str(random.randrange(start, end))
+
 
 # download CSV file used to create names in customer table
 fn_df = pd.read_csv("csv_files/first_name.csv")
 first_names = fn_df['Name'].tolist()
 
 # download CSV file used to create last names in customer table
-
 ln_df = pd.read_csv("csv_files/last_name.csv")
 last_names = ln_df['name'].tolist()
 
 # download CSV file used to create product information in items table
+# CSV file downlaoded from https://github.com/etano/productner/blob/master/Product%20Dataset.csv
 prod_df = pd.read_csv("csv_files/products.csv")
 prod_id = prod_df["id"].tolist()
 prod_name = prod_df["name"].tolist()

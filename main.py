@@ -17,14 +17,16 @@ def populate_tables():
         cur.commit()
 
     # Populate 100 products into item table
-    for numb in range(100):
+    for numb in range(200):
         p_id = data.prod_id[numb]
         p_name = data.prod_name[numb]
         p_desc = data.prod_desc[numb]
         p_price = data.prod_price[numb]
-        db.execute("INSERT INTO items (item_id, item_name, item_description, price)"
-                   "VALUES (?, ?, ?, ?)", (p_id, p_name, p_desc, p_price))
-        cur.commit()
+        print(type(p_price), p_price)
+        if type(p_price) == str: # Avoid adding items to table with no price
+            db.execute("INSERT INTO items (item_id, item_name, item_description, price)"
+                       "VALUES (?, ?, ?, ?)", (p_id, p_name, p_desc, p_price))
+            cur.commit()
 
     # Using Primary Key of each customer in customer table
     # to link to other tables
@@ -116,6 +118,7 @@ def main():
     print('\nGood Bye!!\n')
     print('Shutting Down...\n' * 3)
     clear_table_data()
+
 
 
 main()
