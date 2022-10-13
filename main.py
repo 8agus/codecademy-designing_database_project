@@ -22,7 +22,6 @@ def populate_tables():
         p_name = data.prod_name[numb]
         p_desc = data.prod_desc[numb]
         p_price = data.prod_price[numb]
-        print(type(p_price), p_price)
         if type(p_price) == str: # Avoid adding items to table with no price
             db.execute("INSERT INTO items (item_id, item_name, item_description, price)"
                        "VALUES (?, ?, ?, ?)", (p_id, p_name, p_desc, p_price))
@@ -67,7 +66,7 @@ def populate_tables():
 
 # Generates a list of customers
 def get_cust_list():
-    print("Here is a list of customers: ")
+    print("Here is a list of customers: \n")
     cust_list = db.execute('SELECT cu_id,  name,  last_name FROM customer;')
     for cust in cust_list:
         print(list(cust))
@@ -93,7 +92,7 @@ def get_sales_figures(cust_numb):
     for column in sales_info:
 
         print('Name: ', column[0])
-        print('Sure Name: ', column[1])
+        print('Surname: ', column[1])
         print('Order #: ', column[2])
         print('Item Name: ', column[3])
         print('Price: ', column[4], '\n')
@@ -111,7 +110,7 @@ def main():
     # insert data from csv files into tables
     print('Loading data...\n' * 3)
     populate_tables()
-    print('Loading Completed.')
+    print('Loading Completed.\n')
 
     get_cust_list()
 
